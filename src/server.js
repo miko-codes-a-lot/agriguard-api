@@ -9,6 +9,9 @@ app.use(helmet)
 app.disable('x-powered-by')
 
 const main = async () => {
+  const { mongoose } = require('./db')
+  await mongoose.connect()
+
   app.get('/api/version', (_, res) => res.status(200).json({ version: '1.0.0' }))
 
   app.use((_, res) => res.status(404).json({ message: 'Not found' }))
