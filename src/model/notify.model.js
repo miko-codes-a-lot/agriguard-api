@@ -10,9 +10,13 @@ const notifySchema = new Schema({
     type: String,
     enum: [
       'onion_insurance',
+      'onion_insurance_feedback',
       'rice_insurance',
+      'rice_insurance_feedback',
       'complaint',
-      'indemnity'
+      'complaint_feedback',
+      'indemnity',
+      'indemnity_feedback'
     ],
     required: false
   },
