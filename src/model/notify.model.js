@@ -5,22 +5,19 @@ const { Schema } = mongoose
 const notifySchema = new Schema({
   sender: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   receiver: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  type: {
+  documentId: { type: Schema.Types.ObjectId, required: false },
+  documentType: {
     type: String,
     enum: [
-      'onion_insurance_application',
-      'rice_insurance_application',
-      'application_status_update',
-      'complaint_filed',
-      'complaint_reviewed',
-      'indemnity_filed',
-      'indemnity_status_update'
+      'onion_insurance',
+      'rice_insurance',
+      'complaint',
+      'indemnity'
     ],
-    required: true
+    required: false
   },
   message: { type: String, required: true },
   read: { type: Boolean, default: false },
-  documentId: { type: Schema.Types.ObjectId, required: false },
   createdAt: { type: Date, default: Date.now }
 })
 
