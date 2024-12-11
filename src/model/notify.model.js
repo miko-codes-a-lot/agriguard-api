@@ -24,7 +24,7 @@ const notifySchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 })
 
-const Notify = mongoose.model('Notification', notifySchema, 'Notification')
+const Notify = mongoose.model('Notify', notifySchema, 'Notify')
 
 module.exports = {
   Notify
