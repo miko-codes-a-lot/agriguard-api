@@ -13,6 +13,16 @@ const notifyOnCreate = async (doc) => {
   })
 }
 
+const notifyOnStatusUpdate = async (doc, status) => {
+  return notifyService.create({
+    senderId: doc.lastUpdatedById,
+    receiverId: doc.userId,
+    documentType: 'rice_insurance_feedback',
+    documentId: doc._id,
+    message: `Rice insurance application has been ${status}!`
+  })
+}
+
 module.exports = {
   RiceInsuranceStream: {
     watch: () => {
@@ -24,7 +34,11 @@ module.exports = {
         if (change.operationType === 'insert') {
           await notifyOnCreate(doc)
         } else if (change.operationType === 'update') {
-          console.log('nothing at the moment')
+          const status = change?.updateDescription?.updatedFields?.status
+
+          if (status) {
+            await notifyOnStatusUpdate(doc, status)
+          }
         }
       })
     }
