@@ -39,7 +39,6 @@ module.exports = {
           if (status) {
             await notifyOnStatusUpdate(doc, status)
           }
-          console.log('nothing at the moment')
         }
       })
     }
