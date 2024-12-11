@@ -9,7 +9,7 @@ const notifyOnCreate = async (doc) => {
     receiverId: user.createdById,
     documentType: 'rice_insurance',
     documentId: doc._id,
-    message: `Rice insurance have been filed by ${user.firstName} ${user.lastName}`
+    message: `Rice insurance application has been filed by ${user.firstName} ${user.lastName}`
   })
 }
 
