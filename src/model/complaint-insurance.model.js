@@ -6,6 +6,16 @@ const complaintInsuranceSchema = new Schema({
   userId: String,
   rice: Boolean,
   onion: Boolean,
+  status: {
+    type: String,
+    enum: [
+      'approved',
+      'rejected',
+      'pending'
+    ],
+    required: false,
+    default: 'pending'
+  },
   causeOfDamage: String,
   treatment: String,
   imageBase64: String,

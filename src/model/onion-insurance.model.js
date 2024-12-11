@@ -4,6 +4,16 @@ const { Schema } = mongoose
 const onionInsuranceSchema = new Schema({
   _id: mongoose.Types.ObjectId,
   userId: String,
+  status: {
+    type: String,
+    enum: [
+      'approved',
+      'rejected',
+      'pending'
+    ],
+    required: false,
+    default: 'pending'
+  },
   fillUpDate: Date,
   ipTribe: String,
   male: Boolean,

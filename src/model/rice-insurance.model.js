@@ -4,6 +4,16 @@ const { Schema } = mongoose
 const riceInsuranceSchema = new Schema({
   _id: mongoose.Types.ObjectId,
   userId: String,
+  status: {
+    type: String,
+    enum: [
+      'approved',
+      'rejected',
+      'pending'
+    ],
+    required: false,
+    default: 'pending'
+  },
   insuranceId: String,
   lender: String,
   fillUpDate: Date,

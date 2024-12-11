@@ -4,6 +4,16 @@ const { Schema } = mongoose
 const indemnitySchema = new Schema({
   _id: mongoose.Types.ObjectId,
   userId: String,
+  status: {
+    type: String,
+    enum: [
+      'approved',
+      'rejected',
+      'pending'
+    ],
+    required: false,
+    default: 'pending'
+  },
   fillupdate: Date,
   regular: Boolean,
   punla: Boolean,
