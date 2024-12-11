@@ -75,4 +75,6 @@ const riceInsuranceSchema = new Schema({
 
 const RiceInsurance = mongoose.model('RiceInsurance', riceInsuranceSchema, 'RiceInsurance')
 
-module.exports = RiceInsurance
+module.exports = {
+  RiceInsurance
+}
