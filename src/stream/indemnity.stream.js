@@ -19,7 +19,7 @@ const notifyOnStatusUpdate = async (doc, status) => {
     receiverId: doc.userId,
     documentType: 'indemnity_insurance_feedback',
     documentId: doc._id,
-    message: `Indemnity has been ${status}!`
+    message: `Indemnity application has been ${status}!`
   })
 }
 
