@@ -49,7 +49,7 @@ const indemnitySchema = new Schema({
   toJSON: { getters: true }
 })
 
-const Indemnity = mongoose.model('Indemnity', indemnitySchema)
+const Indemnity = mongoose.model('Indemnity', indemnitySchema, 'Indemnity')
 
 module.exports = {
   Indemnity
