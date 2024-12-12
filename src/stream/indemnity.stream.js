@@ -7,7 +7,7 @@ const notifyOnCreate = async (doc) => {
   return notifyService.create({
     senderId: doc.createdById,
     receiverId: user.createdById,
-    documentType: 'indemnity_insurance',
+    documentType: 'indemnity',
     documentId: doc._id,
     message: `Indemnity application has been filed by ${user.firstName} ${user.lastName}`
   })
