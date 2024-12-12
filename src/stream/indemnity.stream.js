@@ -17,7 +17,7 @@ const notifyOnStatusUpdate = async (doc, status) => {
   return notifyService.create({
     senderId: doc.lastUpdatedById,
     receiverId: doc.userId,
-    documentType: 'indemnity_insurance_feedback',
+    documentType: 'indemnity_feedback',
     documentId: doc._id,
     message: `Indemnity application has been ${status}!`
   })
