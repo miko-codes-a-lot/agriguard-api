@@ -16,6 +16,9 @@ const complaintInsuranceSchema = new Schema({
     required: false,
     default: 'pending'
   },
+  variety: String,
+  areaDamage: String,
+  degreeOfDamage: String,
   causeOfDamage: String,
   treatment: String,
   imageBase64: String,
