@@ -22,7 +22,10 @@ const userSchema = new Schema({
   lastUpdatedById: mongoose.Types.ObjectId,
   lastUpdatedAt: Date,
   deletedById: mongoose.Types.ObjectId,
-  deletedAt: Date
+  deletedAt: Date,
+  resetPasswordToken: String,
+  resetTokenExpiration: Date,
+  isVerified: Boolean
 }, {
   versionKey: false,
   timestamps: false,
@@ -32,6 +35,4 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema, 'User')
 
-module.exports = {
-  User
-}
+module.exports = User
