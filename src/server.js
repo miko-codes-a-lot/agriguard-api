@@ -5,8 +5,10 @@ const app = express()
 app.use(express.json())
 
 const helmet = require('helmet')
-app.use(helmet)
+app.use(helmet())
 app.disable('x-powered-by')
+
+const userRoutes = require('./routes/user.routes')
 
 const main = async () => {
   const { mongoose } = require('./db')
@@ -15,6 +17,8 @@ const main = async () => {
   // Start the notification
   const { Stream } = require('./stream')
   Stream.start()
+
+  app.use('/api', userRoutes)
 
   app.get('/api/version', (_, res) => res.status(200).json({ version: '1.0.0' }))
 
