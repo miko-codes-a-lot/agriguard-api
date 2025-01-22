@@ -14,7 +14,7 @@ const formatPhoneNumber = (phoneNumber, countryCode = 'PH') => {
   }
 }
 
-const sendMessage = async (message, receiver = '+15005550006') => {
+const sendMessage = async (message, receiver = '+639394251071') => {
   try {
     const formattedReceiver = formatPhoneNumber(receiver)
     if (!formattedReceiver) {
