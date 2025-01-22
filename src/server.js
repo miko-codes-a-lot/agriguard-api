@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+const { mongoose } = require('./db')
+const { Stream } = require('./stream')
 const app = express()
 app.use(express.json())
 
@@ -8,19 +10,16 @@ const helmet = require('helmet')
 app.use(helmet())
 app.disable('x-powered-by')
 
-const userRoutes = require('./routes/user.routes')
+// const userRoutes = require('./routes/user.routes')
 
 const main = async () => {
-  const { mongoose } = require('./db')
   await mongoose.connect()
 
-  // Start the notification
-  const { Stream } = require('./stream')
   Stream.start()
 
-  app.use('/api', userRoutes)
+  // app.use('/api', userRoutes)
 
-  app.get('/api/version', (_, res) => res.status(200).json({ version: '1.0.0' }))
+  app.get('/api/version', (_, res) => res.status(200).json({ version: '1.0.2' }))
 
   app.use((_, res) => res.status(404).json({ message: 'Not found' }))
   app.use((err, _, res) => {
@@ -28,9 +27,9 @@ const main = async () => {
     res.status(500).send({ message: 'Something went wrong' })
   })
 
-  const port = process.env.SERVER_PORT || 3000
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+  const PORT = process.env.PORT || 3000
+  app.listen(PORT, () => {
+    console.log(`Server running at ${process.env.APP_URL || 'http://localhost:' + PORT}`)
   })
 }
 
